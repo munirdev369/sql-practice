@@ -1,26 +1,26 @@
 import React, { CSSProperties, useRef, useState } from "react";
 import { useDatabase } from "../../SQLDatabase";
 import "./editor.css";
-import { Button, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import withModalErrorBoundary from "../ErrorBoundary";
 import { useError } from "../../hook/useError";
-import { SuccessModal } from "./SuccessModal";
-import { useNavigate } from "react-router-dom";
 import { Actions, useDispatch, useStore } from "../../store";
+import { useTheme } from "../../hook/useTheme";
+import { AnswerInput, ButtonContainer, Container } from "./Editor.style";
+import { Result } from "../Result";
+import { CSVLink } from "react-csv";
 
 const btnStyles: CSSProperties = {
-	maxWidth: "150px",
-	height: 60,
-	width: "100%",
+	height: 50,
+	minWidth: 150,
 	paddingTop: 10,
 	paddingBottom: 10,
+	paddingInline: 30,
 };
 
 interface Props {}
 
 const EditorWithoutErrorBoundary: React.FunctionComponent<Props> = ({}) => {
-	const navigate = useNavigate();
-
 	const { answer } = useStore();
 	const dispatch = useDispatch();
 	const { throwError } = useError();
@@ -43,36 +43,63 @@ const EditorWithoutErrorBoundary: React.FunctionComponent<Props> = ({}) => {
 		try {
 			const { columns, values } = getQueryResult(answer.replace(";", ""));
 			dispatch({ type: Actions.SET_RESULT, payload: { columns, values } });
-			navigate("/result", { replace: true });
 		} catch (error) {
 			const { message = "" } = error as Error;
 			return throwError(message);
 		}
 	};
+	const { colors } = useTheme();
 
-	const handleViewResult = () => {
-		navigate("/result", { replace: true });
+	const handleAnswer = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		dispatch({ type: Actions.SET_ANSWER, payload: e.target.value });
 	};
 
+	const {
+		result,
+	} = useStore();
+
+	const handleExportResults = () => {};
+
 	return (
-		<Container className="sql-box">
-			<textarea
-				className="answers"
+		<Container>
+			<AnswerInput
 				value={answer}
-				onChange={(e) => {
-					dispatch({ type: Actions.SET_ANSWER, payload: e.target.value });
-				}}
+				onChange={handleAnswer}
+				borderColor={`${colors.bg.primary}`}
+				bg={`${colors.bg.secondary?.[200]}`}
+				color={`${colors.text.primary?.[200]}`}
 				autoFocus
-				cols={20}
-			></textarea>
-			<div className="d-flex  justify-content-between">
-				<Button style={btnStyles} onClick={handleRun}>
+				cols={10}
+			/>
+			<ButtonContainer>
+				<Button
+					style={{
+						...btnStyles,
+						borderColor: `${colors.text.secondary}`,
+						color: `${colors.text.secondary}`,
+						backgroundColor: `${colors.bg.secondary?.[100]}`,
+					}}
+					onClick={handleExportResults}
+				>
+					<CSVLink
+						style={{ color: "inherit", textDecoration: "none" }}
+						data={[result.columns, ...result.values]}
+					>
+						Export Results
+					</CSVLink>
+				</Button>
+				<Button
+					style={{
+						...btnStyles,
+						backgroundColor: `${colors.bg.primary}`,
+						borderColor: `${colors.bg.primary}`,
+					}}
+					onClick={handleRun}
+				>
 					Run
 				</Button>
-				<Button style={btnStyles} onClick={handleViewResult}>
-					View Results
-				</Button>
-			</div>
+			</ButtonContainer>
+			<Result {...result} />
 		</Container>
 	);
 };

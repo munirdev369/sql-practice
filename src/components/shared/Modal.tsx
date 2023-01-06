@@ -2,7 +2,8 @@ import React, { PropsWithChildren } from "react";
 import { ModalBody } from "react-bootstrap";
 import { MdClose } from "react-icons/md";
 import Modal, { Styles } from "react-modal";
-
+import styled from "styled-components";
+import { useTheme } from "../../hook/useTheme";
 const customStyles: Styles = {
 	content: {
 		top: "50%",
@@ -53,23 +54,52 @@ const CustomModal: React.FunctionComponent<AppModalProps> = ({
 	handleClose,
 	children,
 }) => {
+	const { colors, theme } = useTheme();
+
 	return (
-		<div>
-			<Modal isOpen={open} onRequestClose={handleClose} style={customStyles}>
-				<ModalBody className="w-100% mx-auto">
-					<p style={titleStyles}>{text}</p>
-					<button onClick={handleClose} style={buttonStyle}>
-						<MdClose
-							fontSize={16}
-							color="black"
-							style={{ cursor: "pointer" }}
-						/>
-					</button>
-					{children}
-				</ModalBody>
-			</Modal>
-		</div>
+		<Modal
+			isOpen={true}
+			onRequestClose={handleClose}
+			style={{
+				...customStyles,
+				content: {
+					...customStyles.content,
+					backgroundColor: `${colors.bg.secondary?.[100]}`,
+				},
+			}}
+		>
+			<AppModalBody style={{}} color={`${colors.text.primary?.[200]}`}>
+				<img src={`/cross-icon-${theme}.svg`} />
+				<h4>Error Occured</h4>
+				<p>{text}</p>
+				<button onClick={handleClose} style={buttonStyle}>
+					<MdClose
+						fontSize={20}
+						color={`${colors.bg.primary}`}
+						style={{ cursor: "pointer" }}
+					/>
+				</button>
+				{children}
+			</AppModalBody>
+		</Modal>
 	);
 };
+
+const AppModalBody = styled(ModalBody)`
+	padding-top: 50px;
+	width: 100%;
+	margin: 0 auto;
+	color: ${(props) => props.color};
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	& * {
+		color: "inherit";
+	}
+	& p {
+		font-size: 18px;
+	}
+`;
 
 export default CustomModal;

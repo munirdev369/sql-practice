@@ -1,0 +1,94 @@
+/* // className="fs-4"
+// style={{ textAlign: "left", color: '#11B618', padding: '10px 20px', margin: '0 auto' }}
+
+*/
+
+.aside {
+  height: 100%;
+  grid-column: 1 / 2;
+  grid-row: 1 / -1;
+  display: grid;
+  place-content: center;
+}
+
+
+.aside_container {
+  --aside-width: 25vw;
+  --offset: 35px;
+  --padding-inline: clamp;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(var(--aside-width) - calc(var(--offset) *2));
+  height: calc(100vh - calc(var(--offset) *2));
+  border-radius: 30px;
+  margin: var(--offset);
+  padding-left: clamp(1.5%, 30px, 7%);
+  padding-right: clamp(1.5%, 30px, 7%);
+  overflow-y: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+  .aside {
+    position: absolute;
+    min-width: 40vw;
+  }
+
+  .aside_container {
+    --aside-width: 100%;
+    position: absolute;
+    z-index: 100;
+  }
+
+}
+
+.aside_title {
+  color: #11B618;
+  margin: 50px 0px;
+  font-size: 28px;
+  padding-left: .6em;
+}
+
+.db__table-list {
+  margin-top: 70px;
+  height: 80vh;
+  overflow-y: scroll;
+  overflow-wrap: normal;
+  position: relative;
+  padding-bottom: 70px;
+}
+div.db__table-list::-webkit-scrollbar {
+  background-color: rgba(232, 232, 232, 0.192);
+  width: 5px;
+  border-radius: 50px;
+}
+
+div.db__table-list::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: rgb(227, 219, 219) /*or any height and color you want*/;
+
+}
+
+
+.db__table-card {
+  width: 100%;
+  padding: .7em 0px;
+  font-size: 18px;
+
+}
+
+.db__table-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px .6em;
+  padding-left: 1em;
+  border-radius: 8px;
+
+}
+
+.db__table-header > p {
+  margin-bottom: 0px;
+}

@@ -5,6 +5,7 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { SQLDatabaseProvider } from "./SQLDatabase";
 import StoreProvider from "./store";
+import { ThemeProvider } from "./hook/useTheme";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
@@ -12,9 +13,11 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 			dbUrl="/DigitalEvidenceDB.db"
 			questionsUrl="/questions.json"
 		>
-			<StoreProvider>
-				<App />
-			</StoreProvider>
+			<ThemeProvider>
+				<StoreProvider>
+					<App />
+				</StoreProvider>
+			</ThemeProvider>
 		</SQLDatabaseProvider>
 	</React.StrictMode>
 );
