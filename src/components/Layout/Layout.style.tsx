@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { sizes } from "../../constant/sizes";
 
 export const Main = styled.div`
 	grid-column: 2 / 3;
 
-	@media screen and (max-width: 1300px) {
+	@media screen and (max-width: ${sizes.xl}) {
 		grid-column: 1 / -1;
 	}
 `;

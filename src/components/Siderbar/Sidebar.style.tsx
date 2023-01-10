@@ -3,6 +3,7 @@ import styled, {
 	StyledComponent,
 	ThemedStyledFunction,
 } from "styled-components";
+import { sizes } from "../../constant/sizes";
 
 export const Aside = styled.div<Record<"backgroundColor", string>>`
 	height: 100%;
@@ -11,7 +12,7 @@ export const Aside = styled.div<Record<"backgroundColor", string>>`
 	display: grid;
 	place-content: center;
 	background-color: ${(props) => props.backgroundColor};
-	@media screen and (max-width: 1300px) {
+	@media screen and (max-width: ${sizes.xl}) {
 		position: absolute;
 		min-width: 400px;
 		width: 100%;
@@ -29,7 +30,7 @@ interface AsideContainerProps {
 
 export const AsideContainer = styled.div<AsideContainerProps>`
 	--aside-width: 25vw;
-	--offset: 35px;
+	--offset: 1vw;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -37,13 +38,13 @@ export const AsideContainer = styled.div<AsideContainerProps>`
 	height: calc(100vh - calc(var(--offset) * 2));
 	border-radius: 30px;
 	margin: var(--offset);
-	padding-left: clamp(1.5%, 30px, 7%);
-	padding-right: clamp(1.5%, 30px, 7%);
+	padding-left: calc(var(--offset) * 2);
+	padding-right: calc(var(--offset) * 2);
 	overflow-y: hidden;
 	background-color: ${(props) => props.backgroundColor};
 	box-shadow: ${(props) => props.boxShadow};
 
-	@media screen and (max-width: 1300px) {
+	@media screen and (max-width: ${sizes.xl}) {
 		--aside-width: 100%;
 		position: absolute;
 		z-index: 100;

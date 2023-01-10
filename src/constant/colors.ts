@@ -46,7 +46,7 @@ export const colors: Record<
 				"200": "#212121",
 			},
 		},
-		text: { primary: { 100: "#fff", 200: "#f2f2f2" } },
+		text: { primary: { 100: "#fff", 200: "#f2f2f2" }, tertiary: '#20F0F10' } ,
 		shadow: {},
 	},
 };

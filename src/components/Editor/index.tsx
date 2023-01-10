@@ -67,9 +67,9 @@ const EditorWithoutErrorBoundary: React.FunctionComponent<Props> = ({}) => {
 				onChange={handleAnswer}
 				borderColor={`${colors.bg.primary}`}
 				bg={`${colors.bg.secondary?.[200]}`}
-				color={`${colors.text.primary?.[200]}`}
+				color={`${colors.text.primary?.[100]}`}
 				autoFocus
-				cols={10}
+				cols={8}
 			/>
 			<ButtonContainer>
 				<Button

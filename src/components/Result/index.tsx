@@ -27,7 +27,6 @@ export const Result: React.FunctionComponent<{
 				cellSpacing={20}
 				cellPadding={10}
 				bordered
-				hover
 				size="sm"
 				style={{ overflowY: "scroll" }}
 			>
@@ -45,6 +44,7 @@ export const Result: React.FunctionComponent<{
 						even: `${colors.bg.secondary?.[100]}`,
 						odd: `${colors.bg.secondary?.[200]}`,
 					}}
+					hoverColor={`${colors.text.primary?.[200]}`}
 					color={`${colors.text.primary?.[200]}`}
 				>
 					{values.map((item, idx) => {
