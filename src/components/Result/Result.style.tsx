@@ -22,8 +22,7 @@ export const TableHead = styled.thead<{ bg: string }>`
 	& th {
 		text-align: center;
 		max-width: 120px;
-		word-break: "break-word";
-		line-height: 50px;
+		word-break: break-all;
 		vertical-align: middle;
 		color: white;
 		font-size: 1.6em;
