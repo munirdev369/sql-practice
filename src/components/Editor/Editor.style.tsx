@@ -14,6 +14,7 @@ export const Container = styled(BsContainer)`
 	max-width: 100%;
 	font-size: 62.5%;
 
+
 	@media screen and (max-width: ${sizes.lg}) {
 		font-size: 56%;
 
@@ -32,13 +33,14 @@ export const Container = styled(BsContainer)`
 
 export const AnswerInput = styled.textarea<{ borderColor: string; bg: string; color: string; }>`
 	font-size: 2em;
-	min-height: 15em;
+	max-height: 25em;
 	padding: 1.2em;
-	height: 100%;
+	height: 12em;
 	display: inline-block;
 	border-color: ${(props) => props.borderColor};
 	background-color: ${props => props.bg};
 	color: ${props => props.color};
+	resize: vertical;
 	&:hover, &:focus, &:focus-within {
 		border-color: ${(props) => props.borderColor};
 		outline: none;
