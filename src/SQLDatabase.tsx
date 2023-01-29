@@ -8,6 +8,7 @@ import {
 import initSqlJs from "sql.js";
 import { Buffer } from "buffer";
 import { Loader } from "./components/shared/Loader";
+import { config } from "./constant/config";
 interface SQLDatabaseState {
 	questions: {
 		data: Array<QuestionType>;
@@ -50,14 +51,14 @@ export const SQLDatabaseProvider: React.FunctionComponent<
 		setLoading(true);
 		try {
 			const [database, questions] = await Promise.all([
-				fetch(dbUrl),
+				fetch(`${config.SERVER_URL}/${dbUrl}`),
 				fetch(questionsUrl).then((res) => res.json()),
 			]);
 			const [dataBuffer, SQL] = await Promise.all([
 				database.arrayBuffer(),
 				initSqlJs({
 					locateFile: (url: string) => {
-						return `/${url}`;
+						return `${config.SERVER_URL}/${url}`;
 					},
 				}),
 			]);
