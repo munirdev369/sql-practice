@@ -57,8 +57,8 @@ export const SQLDatabaseProvider: React.FunctionComponent<
 			const [dataBuffer, SQL] = await Promise.all([
 				database.arrayBuffer(),
 				initSqlJs({
-					locateFile: (url: string) => {
-						return `${config.SERVER_URL}/${url}`;
+					locateFile: (file: string) => {
+						return `https://sql.js.org/dist/${file}`
 					},
 				}),
 			]);

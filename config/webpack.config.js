@@ -302,7 +302,8 @@ module.exports = function (webpackEnv) {
       ),
       fallback: {
         path: false,
-        fs: false
+        fs: false,
+        crypto: false,
       },
       // These are the reasonable defaults supported by the Node ecosystem.
       // We also include JSX as a common component filename extension to support
