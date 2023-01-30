@@ -10,8 +10,8 @@ import { ThemeProvider } from "./hook/useTheme";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
 		<SQLDatabaseProvider
-			dbUrl="/DigitalEvidenceDB.db"
-			questionsUrl="/questions.json"
+			dbUrl="DigitalEvidenceDB.db"
+			questionsUrl="questions.json"
 		>
 			<ThemeProvider>
 				<StoreProvider>

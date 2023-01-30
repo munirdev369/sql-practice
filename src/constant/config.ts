@@ -3,7 +3,7 @@ const devConfig = {
 }
 
 const prodConfig = {
-  SERVER_URL: 'http://192.34.60.197:4000'
+  SERVER_URL: 'https://api.wsdalearning.com'
 }
 
 export const config = {
