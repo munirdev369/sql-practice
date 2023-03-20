@@ -54,14 +54,16 @@ export const AsideContainer = styled.div<AsideContainerProps>`
 export const AsideHeader = styled.div`
 	display: flex;
 	align-items: center;
+	height: 15%;
 `;
 
 export const AsideBody = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	height: 80vh;
+	height: 75%;
 	overflow-y: scroll;
+	overflow-x: hidden;
 	overflow-wrap: normal;
 	position: relative;
 	padding-bottom: 70px;
@@ -100,10 +102,6 @@ type AsideCardComponent = React.FunctionComponent<PropsWithChildren<{}>> &
 	AsideCardSubComponents;
 
 export const AsideCard: AsideCardComponent = ({ children }) => {
-	const Childrens = () => {
-		return;
-	};
-
 	return (
 		<AsideCardStyled>
 			<>{children}</>
@@ -140,3 +138,10 @@ AsideCard.Body = styled.div<BodyProps>`
 	padding-top: 10px;
 	margin-left: 20px;
 `;
+
+export const AsideFooter = styled.div`
+	margin-top: auto;
+	height: 10%;
+	display: grid;
+	place-content:center;
+`

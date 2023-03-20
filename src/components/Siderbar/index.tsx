@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { CSSProperties, useState } from "react";
 import { useDatabase } from "../../SQLDatabase";
 import { MdArrowRight, MdClose } from "react-icons/md";
 import { useTheme } from "../../hook/useTheme";
@@ -8,62 +8,27 @@ import {
 	AsideBody,
 	AsideCard,
 	AsideContainer,
+	AsideFooter,
 	AsideHeader,
 } from "./Sidebar.style";
-
-type TableData = {
-	id: number;
-	name: string;
-	columns: string[];
-	showColumns: boolean;
-};
 
 interface Props {
 	isSidebar: boolean;
 	closeSidebar: () => void;
 }
 
+const btnStyles: CSSProperties = {
+	height: 50,
+	minWidth: 220,
+};
+
 export const Sidebar: React.FunctionComponent<Props> = ({
 	closeSidebar,
 	isSidebar,
 }) => {
-	const db = useDatabase();
-	const [tables, setTables] = useState<TableData[]>([]);
-	const [loading, setLoading] = useState(false);
-
+	const { loading, tables, updateDatabase, setTables } = useDatabase();
 	const { colors } = useTheme();
-
-	useEffect(() => {
-		if (db) {
-			setLoading(true);
-			const data = [];
-			const tables = db.exec(
-				"select tbl_name from sqlite_master where type = 'table'"
-			);
-
-			const tableNames = tables
-				.values()
-				.next()
-				.value.values.flatMap((e: any) => e);
-			for (let i = 0; i < tableNames.length; i++) {
-				const colQuery = db.exec(
-					`SELECT name FROM PRAGMA_TABLE_INFO('${tableNames[i]}');`
-				);
-				const columns = colQuery
-					.map((v) => v.values)[0]
-					.flatMap((c) => c) as string[];
-				data.push({
-					id: i + 1,
-					name: tableNames[i],
-					columns,
-					showColumns: false,
-				});
-			}
-
-			setTables(data);
-			setLoading(false);
-		}
-	}, [db]);
+	const [customFile, setCustomFile] = useState("");
 
 	const handleTableItemClick = (id: number) => {
 		setTables((pt) => {
@@ -91,7 +56,7 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 						/>
 					)}
 					<h4
-						className="aside_title"	
+						className="aside_title"
 						style={{ backgroundColor: `${colors.bg.secondary?.[200]}` }}
 					>
 						DataBase Tables
@@ -156,6 +121,50 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 						))}
 					</AsideBody>
 				)}
+
+				<AsideFooter>
+					<div
+						style={{
+							...btnStyles,
+							backgroundColor: `${colors.bg.primary}`,
+							borderColor: `${colors.bg.primary}`,
+							width: "100%",
+							position: "relative",
+							borderRadius: "10px",
+							display: "grid",
+							placeContent: "center",
+							color: "white",
+							cursor: "pointer",
+						}}
+					>
+						<input
+							type="file"
+							style={{
+								position: "absolute",
+								top: "0",
+								left: 0,
+								height: "100%",
+								opacity: 0,
+								width: "100%",
+							}}
+							onChange={async (e) => {
+								try {
+									const files = e.target.files;
+									if (!files || files?.length === 0) return;
+									const file = files[0];
+									const fileBuffer = await file.arrayBuffer();
+									const updated = await updateDatabase(fileBuffer);
+									if (updated) {
+										setCustomFile(`${file.name} Loaded`);
+									} else {
+										setCustomFile('')
+									}
+								} catch (error) {}
+							}}
+						/>
+						{customFile || "Load Database"}
+					</div>
+				</AsideFooter>
 			</AsideContainer>
 		</Aside>
 	);

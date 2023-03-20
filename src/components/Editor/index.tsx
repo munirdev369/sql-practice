@@ -1,4 +1,4 @@
-import React, { CSSProperties, useRef, useState } from "react";
+import React, { CSSProperties } from "react";
 import { useDatabase } from "../../SQLDatabase";
 import "./editor.css";
 import { Button } from "react-bootstrap";
@@ -18,13 +18,12 @@ const btnStyles: CSSProperties = {
 	paddingInline: 30,
 };
 
-interface Props {}
 
-const EditorWithoutErrorBoundary: React.FunctionComponent<Props> = ({}) => {
+const EditorWithoutErrorBoundary: React.FC = () => {
 	const { answer } = useStore();
 	const dispatch = useDispatch();
 	const { throwError } = useError();
-	const db = useDatabase();
+	const { db } = useDatabase();
 
 	const getQueryResult = (query: string) => {
 		const expectedResult = db!.exec(query);
