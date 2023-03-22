@@ -20,7 +20,7 @@ export const colors: Record<
 > = {
 	light: {
 		bg: {
-			primary: "#11B618",
+			primary: "#0FBC02",
 			secondary: {
 				"100": "#fff",
 				"200": "#fafafa",
@@ -28,10 +28,10 @@ export const colors: Record<
 		},
 		text: {
 			primary: {
-				"100": "#8D8D8D",
-				"200": "#333333",
+				"100": "##2F3948",
+				"200": "#182334",
 			},
-			secondary: "#11B618",
+			secondary: "#0FBC02",
 			tertiary: "#fafafa",
 		},
 		shadow: {
@@ -40,13 +40,13 @@ export const colors: Record<
 	},
 	dark: {
 		bg: {
-			primary: "#11B618",
+			primary: "#0FBC02",
 			secondary: {
-				"100": "#0F0F10",
-				"200": "#212121",
+				"200": "#182334",
+				"100": "#2F3948",
 			},
 		},
-		text: { primary: { 100: "#fff", 200: "#f2f2f2" }, tertiary: '#20F0F10' } ,
+		text: { primary: { 100: "#fff", 200: "#f2f2f2" }, tertiary: '#182334' } ,
 		shadow: {},
 	},
 };

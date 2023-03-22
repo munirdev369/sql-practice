@@ -57,7 +57,10 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 					)}
 					<h4
 						className="aside_title"
-						style={{ backgroundColor: `${colors.bg.secondary?.[200]}` }}
+						style={{
+							backgroundColor: `${colors.bg.secondary?.[200]}`,
+							fontFamily: "Bebas Neue",
+						}}
 					>
 						DataBase Tables
 					</h4>
@@ -157,7 +160,7 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 									if (updated) {
 										setCustomFile(`${file.name} Loaded`);
 									} else {
-										setCustomFile('')
+										setCustomFile("");
 									}
 								} catch (error) {}
 							}}

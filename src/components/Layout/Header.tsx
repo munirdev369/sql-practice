@@ -1,20 +1,9 @@
-import React, { useRef, useState } from "react";
-import {
-	Navbar,
-	NavbarBrand,
-	Nav,
-	NavItem,
-	NavLink,
-	Form,
-	Col,
-	Container as BsContainer,
-} from "react-bootstrap";
+import React from "react";
+import { Navbar, Nav, NavItem, Form } from "react-bootstrap";
 import { sizes } from "../../constant/sizes";
 import { useTheme } from "../../hook/useTheme";
 import styled from "styled-components";
 import useMediaQuery from "../../hook/useMediaQuery";
-
-const navItems = [{ id: 1, title: "Editor", link: "/" }];
 
 interface Props {
 	handleSidebar: () => void;
@@ -32,11 +21,27 @@ const Header: React.FunctionComponent<Props> = ({ handleSidebar }) => {
 		<AppHeader backgroundColor={`${colors.bg.primary}`}>
 			<AppNavbar expand="xl">
 				<Navbar.Toggle onClick={handleToggleClick} />
-				<Navbar.Brand style={{ color: "white" }}>WSDA SQL Editor</Navbar.Brand>
-				<Nav>
+				<Navbar.Brand style={{ color: "white", gap: '0', fontFamily:'Bebas Neue' }}>
+					<img src={require("../../assets/logo.png")} alt="wsda logo" width={100} />
+					WSDA SQL Practice Dojo
+				</Navbar.Brand>
+				<Nav style={{ gap: "2em", paddingRight: 20 }}>
 					<NavItem className="mode m-auto ms-sm-auto me-sm-0 d-flex">
 						{media ? "Mode" : ""}
 						<CustomSwitch onChange={toggleMode} />
+					</NavItem>
+					<NavItem
+						className="mode m-auto ms-sm-auto me-sm-0 d-flex"
+						style={{ color: `${colors.text.primary}` }}
+					>
+						<a
+							style={{ color: "inherit", textDecoration: "none" }}
+							href="https://wsdalearning.ai/sqldojohelp"
+							target="_blank"
+							rel="noreferrer"
+						>
+							Help
+						</a>
 					</NavItem>
 				</Nav>
 			</AppNavbar>
@@ -108,31 +113,10 @@ const AppNavbar = styled(Navbar)`
 
 	@media screen and (max-width: ${sizes.xs}) {
 		--scale: 45%;
-		
+
 		grid-template-columns: 40px max-content 1fr;
 		& .navbar-toggler {
 			padding: 2px !important;
-		}
-	}
-`;
-
-const Container = styled(BsContainer)`
-	display: grid !important;
-	grid-auto-flow: column;
-	grid-template-columns: 50px 1fr 1fr;
-	place-content: center;
-	height: 100%;
-	grid-gap: 2em;
-	@media screen and (max-width: ${sizes.sm}) {
-		/* grid-template-columns: 50px 1fr; */
-		/* grid-template-rows: 1.2fr 1fr; */
-		grid-gap: 1em;
-		& *:first-child {
-			grid-row: 1 / -1;
-		}
-
-		& *:not(:first-child) {
-			place-self: end;
 		}
 	}
 `;

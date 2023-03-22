@@ -1,8 +1,7 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
-  font-weight: 400;
+  font-weight: 400; 
 
   color: rgba(255, 255, 255, 0.87);
   --main-color: #535bf2;
@@ -18,4 +17,8 @@
 body {
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+* {
+  font-family: 'Work Sans';
 }
