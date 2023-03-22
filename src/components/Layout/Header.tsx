@@ -22,7 +22,7 @@ const Header: React.FunctionComponent<Props> = ({ handleSidebar }) => {
 			<AppNavbar expand="xl">
 				<Navbar.Toggle onClick={handleToggleClick} />
 				<Navbar.Brand style={{ color: "white", gap: '0', fontFamily:'Bebas Neue' }}>
-					<img src={require("../../assets/logo.png")} alt="wsda logo" width={100} />
+					<img src={`${process.env.REACT_APP_PUBLIC_URL}/logo.png`} alt="wsda logo" width={100} />
 					WSDA SQL Practice Dojo
 				</Navbar.Brand>
 				<Nav style={{ gap: "2em", paddingRight: 20 }}>
