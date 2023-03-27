@@ -46,10 +46,9 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 				backgroundColor={`${colors.bg.secondary?.[200]}`}
 				boxShadow={`0px 2px 20px 0px ${colors.shadow.secondary}`}
 			>
-				<AsideHeader>
+				<AsideHeader bg={`${colors.bg.primary}`}>
 					{isSidebar && (
 						<MdClose
-							color={"#11B618"}
 							size={25}
 							onClick={closeSidebar}
 							cursor="pointer"
@@ -58,8 +57,8 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 					<h4
 						className="aside_title"
 						style={{
-							backgroundColor: `${colors.bg.secondary?.[200]}`,
 							fontFamily: "Bebas Neue",
+							padding: '0px 50px'
 						}}
 					>
 						DataBase Tables
@@ -129,7 +128,7 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 					<div
 						style={{
 							...btnStyles,
-							backgroundColor: `${colors.bg.primary}`,
+							backgroundColor: `#0FBC02`,
 							borderColor: `${colors.bg.primary}`,
 							width: "100%",
 							position: "relative",

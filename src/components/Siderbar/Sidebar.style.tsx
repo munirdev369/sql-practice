@@ -1,8 +1,5 @@
-import React, { Children, PropsWithChildren } from "react";
-import styled, {
-	StyledComponent,
-	ThemedStyledFunction,
-} from "styled-components";
+import React, { PropsWithChildren } from "react";
+import styled, { StyledComponent } from "styled-components";
 import { sizes } from "../../constant/sizes";
 
 export const Aside = styled.div<Record<"backgroundColor", string>>`
@@ -30,7 +27,7 @@ interface AsideContainerProps {
 
 export const AsideContainer = styled.div<AsideContainerProps>`
 	--aside-width: 25vw;
-	--offset: 1vw;
+	--offset: .5vw;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -51,10 +48,14 @@ export const AsideContainer = styled.div<AsideContainerProps>`
 	}
 `;
 
-export const AsideHeader = styled.div`
+export const AsideHeader = styled.div<{ bg: string }>`
 	display: flex;
 	align-items: center;
-	height: 15%;
+	height: 10%;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	background-color: ${props => props.bg};
+	border-radius: 20px;
 `;
 
 export const AsideBody = styled.div`
@@ -66,8 +67,9 @@ export const AsideBody = styled.div`
 	overflow-x: hidden;
 	overflow-wrap: normal;
 	position: relative;
+	padding: 0 15px;
 	padding-bottom: 70px;
-
+	
 	&::-webkit-scrollbar {
 		background-color: rgba(232, 232, 232, 0.192);
 		width: 5px;
@@ -86,9 +88,6 @@ const AsideCardStyled = styled.div`
 	font-size: 18px;
 `;
 
-interface AsideCardHeaderProps {
-	showColums: boolean;
-}
 
 type HeaderProps = Record<"bg" | "color" | "boxShadow", string>;
 type BodyProps = {};
@@ -143,5 +142,5 @@ export const AsideFooter = styled.div`
 	margin-top: auto;
 	height: 10%;
 	display: grid;
-	place-content:center;
-`
+	place-content: center;
+`;

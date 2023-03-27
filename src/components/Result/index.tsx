@@ -1,9 +1,8 @@
 import Table from "react-bootstrap/Table";
-import { CSSProperties, useMemo } from "react";
+import { useMemo } from "react";
 import "./result.css";
 import { Container, TableBody, TableHead, Title } from "./Result.style";
 import { useTheme } from "../../hook/useTheme";
-import { useStore } from "../../store";
 
 export const Result: React.FunctionComponent<{
 	columns: string[];

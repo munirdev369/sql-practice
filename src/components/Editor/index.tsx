@@ -57,15 +57,14 @@ const EditorWithoutErrorBoundary: React.FC = () => {
 		result,
 	} = useStore();
 
-	const handleExportResults = () => {};
 
 	return (
 		<Container>
 			<AnswerInput
 				value={answer}
 				onChange={handleAnswer}
-				borderColor={`${colors.bg.primary}`}
-				bg={`${colors.bg.secondary?.[200]}`}
+				borderColor={`${colors.bg.secondary}`}
+				bg={`${colors.bg.secondary?.[100]}`}
 				color={`${colors.text.primary?.[100]}`}
 				autoFocus
 				cols={8}
@@ -74,11 +73,11 @@ const EditorWithoutErrorBoundary: React.FC = () => {
 				<Button
 					style={{
 						...btnStyles,
-						borderColor: `${colors.text.secondary}`,
-						color: `${colors.text.secondary}`,
-						backgroundColor: `${colors.bg.secondary?.[100]}`,
+						borderColor: `#182334`,
+						color: `${colors.text.primary?.[200]}`,
+						backgroundColor: `transparent`,
+						borderWidth: '2px'
 					}}
-					onClick={handleExportResults}
 				>
 					<CSVLink
 						style={{ color: "inherit", textDecoration: "none" }}
@@ -90,8 +89,8 @@ const EditorWithoutErrorBoundary: React.FC = () => {
 				<Button
 					style={{
 						...btnStyles,
-						backgroundColor: `${colors.bg.primary}`,
-						borderColor: `${colors.bg.primary}`,
+						backgroundColor: `#0FBC02`,
+						border: "none"
 					}}
 					onClick={handleRun}
 				>

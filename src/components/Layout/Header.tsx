@@ -18,11 +18,11 @@ const Header: React.FunctionComponent<Props> = ({ handleSidebar }) => {
 	};
 
 	return (
-		<AppHeader backgroundColor={`${colors.bg.primary}`}>
+		<AppHeader backgroundColor={`#182334`}>
 			<AppNavbar expand="xl">
 				<Navbar.Toggle onClick={handleToggleClick} />
-				<Navbar.Brand style={{ color: "white", gap: '0', fontFamily:'Bebas Neue' }}>
-					<img src={`${process.env.REACT_APP_PUBLIC_URL}/logo.png`} alt="wsda logo" width={100} />
+				<Navbar.Brand style={{ color: "white", fontFamily:'Bebas Neue' }}>
+					<img src={`${process.env.REACT_APP_PUBLIC_URL}/logo-light.png`} style={{ marginRight: '30px' }} alt="wsda logo" width={180} />
 					WSDA SQL Practice Dojo
 				</Navbar.Brand>
 				<Nav style={{ gap: "2em", paddingRight: 20 }}>
