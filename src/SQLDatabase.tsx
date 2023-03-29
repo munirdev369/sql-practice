@@ -129,7 +129,7 @@ export const SQLDatabaseProvider: React.FunctionComponent<
 	};
 
 	const fetchDatabase = async () => {
-		const res = await fetch(`${config.SERVER_URL}/${dbUrl}`);
+		const res = await fetch(`${process.env.REACT_APP_PUBLIC_URL}/${dbUrl}`);
 		return await res.arrayBuffer();
 	};
 
