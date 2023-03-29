@@ -1,5 +1,6 @@
 {
   "name": "sqleditor",
+  "homepage": "https://wsdalearning.ai/sqleditor",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
