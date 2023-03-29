@@ -31,15 +31,6 @@ const buttonStyle: React.CSSProperties = {
 	display: "grid",
 };
 
-const titleStyles: React.CSSProperties = {
-	fontSize: 18,
-	padding: 30,
-	color: "black",
-	width: "350px",
-	textAlign: "center",
-	margin: "0 auto",
-};
-
 Modal.setAppElement("#root");
 
 export interface AppModalProps extends PropsWithChildren {
@@ -69,7 +60,7 @@ const CustomModal: React.FunctionComponent<AppModalProps> = ({
 			}}
 		>
 			<AppModalBody style={{}} color={`${colors.text.primary?.[200]}`}>
-				<img src={`/cross-icon-${theme}.svg`} />
+				<img src={`/cross-icon-${theme}.svg`} alt="cross icon" />
 				<h4>Error Occured</h4>
 				<p>{text}</p>
 				<button onClick={handleClose} style={buttonStyle}>

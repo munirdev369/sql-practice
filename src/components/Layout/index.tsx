@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useLayoutEffect, useState } from "react";
+import React, { PropsWithChildren, useState } from "react";
 import Header from "./Header";
 import { Sidebar } from "../Siderbar";
 import { useTheme } from "../../hook/useTheme";

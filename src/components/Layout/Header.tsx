@@ -1,20 +1,15 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import {
 	Navbar,
-	NavbarBrand,
 	Nav,
 	NavItem,
-	NavLink,
 	Form,
-	Col,
-	Container as BsContainer,
 } from "react-bootstrap";
 import { sizes } from "../../constant/sizes";
 import { useTheme } from "../../hook/useTheme";
 import styled from "styled-components";
 import useMediaQuery from "../../hook/useMediaQuery";
 
-const navItems = [{ id: 1, title: "Editor", link: "/" }];
 
 interface Props {
 	handleSidebar: () => void;
@@ -116,25 +111,5 @@ const AppNavbar = styled(Navbar)`
 	}
 `;
 
-const Container = styled(BsContainer)`
-	display: grid !important;
-	grid-auto-flow: column;
-	grid-template-columns: 50px 1fr 1fr;
-	place-content: center;
-	height: 100%;
-	grid-gap: 2em;
-	@media screen and (max-width: ${sizes.sm}) {
-		/* grid-template-columns: 50px 1fr; */
-		/* grid-template-rows: 1.2fr 1fr; */
-		grid-gap: 1em;
-		& *:first-child {
-			grid-row: 1 / -1;
-		}
-
-		& *:not(:first-child) {
-			place-self: end;
-		}
-	}
-`;
 
 export default Header;

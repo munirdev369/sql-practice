@@ -1,7 +1,6 @@
-import React, { Children, PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 import styled, {
 	StyledComponent,
-	ThemedStyledFunction,
 } from "styled-components";
 import { sizes } from "../../constant/sizes";
 
@@ -84,9 +83,6 @@ const AsideCardStyled = styled.div`
 	font-size: 18px;
 `;
 
-interface AsideCardHeaderProps {
-	showColums: boolean;
-}
 
 type HeaderProps = Record<"bg" | "color" | "boxShadow", string>;
 type BodyProps = {};
@@ -100,10 +96,6 @@ type AsideCardComponent = React.FunctionComponent<PropsWithChildren<{}>> &
 	AsideCardSubComponents;
 
 export const AsideCard: AsideCardComponent = ({ children }) => {
-	const Childrens = () => {
-		return;
-	};
-
 	return (
 		<AsideCardStyled>
 			<>{children}</>

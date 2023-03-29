@@ -101,7 +101,7 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 				{!loading && tables.length > 0 && (
 					<AsideBody>
 						{tables?.map((table, idx) => (
-							<AsideCard>
+							<AsideCard key={table.id}>
 								<AsideCard.Header
 									color={
 										!table.showColumns

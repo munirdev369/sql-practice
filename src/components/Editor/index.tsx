@@ -1,4 +1,4 @@
-import React, { CSSProperties, useRef, useState } from "react";
+import React, { CSSProperties } from "react";
 import { useDatabase } from "../../SQLDatabase";
 import "./editor.css";
 import { Button } from "react-bootstrap";
@@ -20,7 +20,7 @@ const btnStyles: CSSProperties = {
 
 interface Props {}
 
-const EditorWithoutErrorBoundary: React.FunctionComponent<Props> = ({}) => {
+const EditorWithoutErrorBoundary: React.FC<Props> = () => {
 	const { answer } = useStore();
 	const dispatch = useDispatch();
 	const { throwError } = useError();
@@ -58,7 +58,6 @@ const EditorWithoutErrorBoundary: React.FunctionComponent<Props> = ({}) => {
 		result,
 	} = useStore();
 
-	const handleExportResults = () => {};
 
 	return (
 		<Container>
@@ -79,7 +78,6 @@ const EditorWithoutErrorBoundary: React.FunctionComponent<Props> = ({}) => {
 						color: `${colors.text.secondary}`,
 						backgroundColor: `${colors.bg.secondary?.[100]}`,
 					}}
-					onClick={handleExportResults}
 				>
 					<CSVLink
 						style={{ color: "inherit", textDecoration: "none" }}

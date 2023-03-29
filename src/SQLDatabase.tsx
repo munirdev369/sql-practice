@@ -7,7 +7,6 @@ import {
 } from "react";
 import initSqlJs from "sql.js";
 import { Buffer } from "buffer";
-import { Loader } from "./components/shared/Loader";
 import { config } from "./constant/config";
 interface SQLDatabaseState {
 	questions: {
@@ -74,6 +73,7 @@ export const SQLDatabaseProvider: React.FunctionComponent<
 
 	useEffect(() => {
 		fetchSqlJs();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
