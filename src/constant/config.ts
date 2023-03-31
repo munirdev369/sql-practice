@@ -1,9 +1,9 @@
 const devConfig = {
-  SERVER_URL: 'http://localhost:4000'
+  SERVER_URL: 'https://api.wsdalearning.com'
 }
 
 const prodConfig = {
-  SERVER_URL: 'http://localhost:4000'
+  SERVER_URL: 'https://api.wsdalearning.com'
 }
 
 export const config = {
