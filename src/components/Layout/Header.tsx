@@ -11,7 +11,7 @@ interface Props {
 
 const Header: React.FunctionComponent<Props> = ({ handleSidebar }) => {
 	const { colors, toggleMode } = useTheme();
-	const media = useMediaQuery(`(min-width: ${sizes.sm})`);
+	const media = useMediaQuery(`(min-width: ${sizes.md})`);
 
 	const handleToggleClick = () => {
 		handleSidebar();
@@ -20,17 +20,23 @@ const Header: React.FunctionComponent<Props> = ({ handleSidebar }) => {
 	return (
 		<AppHeader backgroundColor={`${colors.bg.primary}`}>
 			<AppNavbar expand="xl">
-				<Navbar.Toggle onClick={handleToggleClick} />
-				<Navbar.Brand style={{ color: 'white', margin: '0 15px' }}>
+				<Navbar.Toggle
+					onClick={handleToggleClick}
+					style={{
+						fontSize: media ? 22 : 15,
+						padding: '3px 5px',
+					}}
+				/>
+				<Navbar.Brand style={{ color: 'white', margin: '0 10px' }}>
 					<a href="https://wsdalearning.ai">
 						<img
 							src={`${process.env.REACT_APP_PUBLIC_URL}/logo-light.png`}
 							style={{ marginRight: '25px' }}
 							alt="wsda logo"
-							width={180}
+							width={media ? 180 : 130}
 						/>
 					</a>
-					WSDA SQL Editor
+					{media ? 'WSDA SQL Editor' : ''}
 				</Navbar.Brand>
 				<Nav>
 					<NavItem className="mode m-auto ms-sm-auto me-sm-0 d-flex">
@@ -59,6 +65,8 @@ const AppHeader =
 	grid-column: 2 / -1;
 	place-self: center;
 	border-radius: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 	background-color: ${(props) => props.backgroundColor};
 	@media screen and (max-width: ${sizes.xl}) {
 		grid-column: 1 / -1;
@@ -101,10 +109,6 @@ const AppNavbar = styled(Navbar)`
           grid-gap: 1em;
           & *:first-child {
                grid-row: 1 / -1;
-          }
-
-          & *:not(:first-child) {
-               place-self: end;
           }
      }
 

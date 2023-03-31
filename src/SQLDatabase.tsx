@@ -43,16 +43,16 @@ export const SQLDatabaseProvider: React.FunctionComponent<
 	PropsWithChildren<Props>
 > = ({ children, dbUrl, questionsUrl }) => {
 	const [db, setDb] = useState<initSqlJs.Database | null>(null);
-	const [questions, setQuestions] = useState<Array<QuestionType>>([]);
+	const [questions] = useState<Array<QuestionType>>([]);
 	const [loading, setLoading] = useState(false);
 	const [, setError] = useState<any | null>(null);
 	const fetchSqlJs = async () => {
 		setLoading(true);
 		try {
-			const [database, questions] = await Promise.all([
+			const [database] = await Promise.all([
 				fetch(`${config.SERVER_URL}/${dbUrl}`),
-				fetch(questionsUrl).then((res) => res.json()),
 			]);
+			console.log(config.SERVER_URL);
 			const [dataBuffer, SQL] = await Promise.all([
 				database.arrayBuffer(),
 				initSqlJs({
@@ -63,7 +63,6 @@ export const SQLDatabaseProvider: React.FunctionComponent<
 			]);
 			const dbSql = new SQL.Database(Buffer.from(dataBuffer));
 			setDb(dbSql);
-			setQuestions(questions);
 			setLoading(false);
 		} catch (err) {
 			setError(err);

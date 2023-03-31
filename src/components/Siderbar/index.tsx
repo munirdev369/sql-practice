@@ -32,7 +32,6 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 	const [loading, setLoading] = useState(false);
 
 	const { colors } = useTheme();
-
 	useEffect(() => {
 		if (db) {
 			setLoading(true);
@@ -58,6 +57,7 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 					columns,
 					showColumns: false,
 				});
+				console.log(columns)
 			}
 
 			setTables(data);

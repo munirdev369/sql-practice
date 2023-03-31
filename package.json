@@ -1,6 +1,6 @@
 {
   "name": "sqleditor",
-  "homepage": "https://wsdalearning.ai/sqleditor",
+  "homepage": "http://localhost:30000/sqleditor",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
