@@ -19,30 +19,30 @@ const Header: React.FunctionComponent<Props> = ({ handleSidebar }) => {
 
 	return (
 		<AppHeader backgroundColor={`#182334`}>
-			<AppNavbar expand="xl">
-				<Navbar.Toggle onClick={handleToggleClick} />
+			<AppNavbar expand="xl" className="navbar-dark d-flex align-items-center">
+				<Navbar.Toggle onClick={handleToggleClick} style={{ color: "white", fontSize: media ? undefined : 12 }} />
 				<Navbar.Brand style={{ color: "white", fontFamily:'Bebas Neue' }}>
 				<a href="https://wsdalearning.ai">
 						<img
 							src={`${process.env.REACT_APP_PUBLIC_URL}/logo-light.png`}
 							style={{ marginRight: '25px' }}
 							alt="wsda logo"
-							width={180}
+							width={media ? 180: 120}
 						/>
 					</a>
-					WSDA SQL Practice Dojo
+					{media ? "WSDA SQL Practice Dojo" : ""}
 				</Navbar.Brand>
-				<Nav style={{ gap: "2em", paddingRight: 20 }}>
+				<Nav style={{ gap: "2em", paddingRight: 20, display: 'flex', flexDirection: "row" }}>
 					<NavItem className="mode m-auto ms-sm-auto me-sm-0 d-flex">
 						{media ? "Mode" : ""}
-						<CustomSwitch onChange={toggleMode} />
+						<CustomSwitch onChange={toggleMode} style={{ width: media ? 40 : 20}} />
 					</NavItem>
 					<NavItem
 						className="mode m-auto ms-sm-auto me-sm-0 d-flex"
 						style={{ color: `${colors.text.primary}` }}
 					>
 						<a
-							style={{ color: "inherit", textDecoration: "none" }}
+							style={{ color: "inherit", textDecoration: "none", fontSize: media ? 20 : 15 }}
 							href="https://wsdalearning.ai/sqldojohelp"
 							target="_blank"
 							rel="noreferrer"
@@ -111,10 +111,6 @@ const AppNavbar = styled(Navbar)`
 		grid-gap: 1em;
 		& *:first-child {
 			grid-row: 1 / -1;
-		}
-
-		& *:not(:first-child) {
-			place-self: end;
 		}
 	}
 

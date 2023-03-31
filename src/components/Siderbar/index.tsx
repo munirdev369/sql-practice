@@ -52,6 +52,8 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 							size={25}
 							onClick={closeSidebar}
 							cursor="pointer"
+							color="white"
+							style={{ marginLeft: 30 }}
 						/>
 					)}
 					<h4

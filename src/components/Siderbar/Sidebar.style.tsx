@@ -51,11 +51,16 @@ export const AsideContainer = styled.div<AsideContainerProps>`
 export const AsideHeader = styled.div<{ bg: string }>`
 	display: flex;
 	align-items: center;
-	height: 10%;
-	margin-top: 10px;
-	margin-bottom: 30px;
+	height: 15%;
+	margin-top: 5px;
 	background-color: ${props => props.bg};
-	border-radius: 20px;
+	border-radius: 10px;
+	padding-top: 18px;
+	padding-bottom: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
 `;
 
 export const AsideBody = styled.div`
@@ -67,8 +72,7 @@ export const AsideBody = styled.div`
 	overflow-x: hidden;
 	overflow-wrap: normal;
 	position: relative;
-	padding: 0 15px;
-	padding-bottom: 70px;
+	padding: 30px 15px;
 	
 	&::-webkit-scrollbar {
 		background-color: rgba(232, 232, 232, 0.192);
