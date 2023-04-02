@@ -26,9 +26,8 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 	closeSidebar,
 	isSidebar,
 }) => {
-	const { loading, tables, updateDatabase, setTables } = useDatabase();
+	const { loading, tables, setTables } = useDatabase();
 	const { colors } = useTheme();
-	const [customFile, setCustomFile] = useState("");
 
 	const handleTableItemClick = (id: number) => {
 		setTables((pt) => {
@@ -127,47 +126,7 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 				)}
 
 				<AsideFooter>
-					<div
-						style={{
-							...btnStyles,
-							backgroundColor: `#0FBC02`,
-							borderColor: `${colors.bg.primary}`,
-							width: "100%",
-							position: "relative",
-							borderRadius: "10px",
-							display: "grid",
-							placeContent: "center",
-							color: "white",
-							cursor: "pointer",
-						}}
-					>
-						<input
-							type="file"
-							style={{
-								position: "absolute",
-								top: "0",
-								left: 0,
-								height: "100%",
-								opacity: 0,
-								width: "100%",
-							}}
-							onChange={async (e) => {
-								try {
-									const files = e.target.files;
-									if (!files || files?.length === 0) return;
-									const file = files[0];
-									const fileBuffer = await file.arrayBuffer();
-									const updated = await updateDatabase(fileBuffer);
-									if (updated) {
-										setCustomFile(`${file.name} Loaded`);
-									} else {
-										setCustomFile("");
-									}
-								} catch (error) {}
-							}}
-						/>
-						{customFile || "Load Database"}
-					</div>
+				
 				</AsideFooter>
 			</AsideContainer>
 		</Aside>

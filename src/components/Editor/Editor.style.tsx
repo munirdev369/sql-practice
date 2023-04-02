@@ -50,12 +50,17 @@ export const AnswerInput = styled.textarea<{ borderColor: string; bg: string; co
 export const ButtonContainer = styled.div`
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 	margin-left: auto;
 	gap: 2em;
 	height: 70px;
 
+	& > * {
+		flex: 1;
+	}
+
 	& button {
-		font-size: 1.8em;
+		font-size: 16px;
 		padding-left: 2em !important;
 		padding-right: 2em !important; 
 		height: 'max-content';

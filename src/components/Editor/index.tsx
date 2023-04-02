@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useState } from "react";
 import { useDatabase } from "../../SQLDatabase";
 import "./editor.css";
 import { Button } from "react-bootstrap";
@@ -12,10 +12,9 @@ import { CSVLink } from "react-csv";
 
 const btnStyles: CSSProperties = {
 	height: 50,
-	minWidth: 150,
+	minWidth: 200,
 	paddingTop: 10,
 	paddingBottom: 10,
-	paddingInline: 30,
 };
 
 
@@ -23,7 +22,8 @@ const EditorWithoutErrorBoundary: React.FC = () => {
 	const { answer } = useStore();
 	const dispatch = useDispatch();
 	const { throwError } = useError();
-	const { db } = useDatabase();
+	const { db, updateDatabase, } = useDatabase();
+	const [customFile, setCustomFile] = useState("");
 
 	const getQueryResult = (query: string) => {
 		const expectedResult = db!.exec(query);
@@ -70,6 +70,50 @@ const EditorWithoutErrorBoundary: React.FC = () => {
 				cols={8}
 			/>
 			<ButtonContainer>
+				<div
+					style={{
+						height: 50,
+						minWidth: 200,
+						maxWidth: 210,
+						backgroundColor: `#0FBC02`,
+						borderColor: `${colors.bg.primary}`,
+						width: "100%",
+						position: "relative",
+						borderRadius: "10px",
+						display: "grid",
+						placeContent: "center",
+						color: "white",
+						cursor: "pointer",
+						fontSize: 16,
+					}}
+				>
+					<input
+						type="file"
+						style={{
+							position: "absolute",
+							top: "0",
+							left: 0,
+							height: "100%",
+							opacity: 0,
+							width: "100%",
+						}}
+						onChange={async (e) => {
+							try {
+								const files = e.target.files;
+								if (!files || files?.length === 0) return;
+								const file = files[0];
+								const fileBuffer = await file.arrayBuffer();
+								const updated = await updateDatabase(fileBuffer);
+								if (updated) {
+									setCustomFile(`${file.name} Loaded`);
+								} else {
+									setCustomFile("");
+								}
+							} catch (error) { }
+						}}
+					/>
+					{customFile || "Load Database"}
+				</div>
 				<Button
 					style={{
 						...btnStyles,
