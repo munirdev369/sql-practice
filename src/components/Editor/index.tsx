@@ -74,7 +74,6 @@ const EditorWithoutErrorBoundary: React.FC = () => {
 					style={{
 						height: 50,
 						minWidth: 200,
-						maxWidth: 210,
 						backgroundColor: `#0FBC02`,
 						borderColor: `${colors.bg.primary}`,
 						width: "100%",
