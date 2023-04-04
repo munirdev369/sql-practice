@@ -53,7 +53,6 @@ export const ButtonContainer = styled.div`
 	flex-wrap: wrap;
 	margin-left: auto;
 	gap: 2em;
-	height: 70px;
 
 	& > * {
 		flex: 1;

@@ -1,4 +1,3 @@
-import { CSSProperties, useState } from "react";
 import { useDatabase } from "../../SQLDatabase";
 import { MdArrowRight, MdClose } from "react-icons/md";
 import { useTheme } from "../../hook/useTheme";
@@ -16,12 +15,6 @@ interface Props {
 	isSidebar: boolean;
 	closeSidebar: () => void;
 }
-
-const btnStyles: CSSProperties = {
-	height: 50,
-	minWidth: 220,
-};
-
 export const Sidebar: React.FunctionComponent<Props> = ({
 	closeSidebar,
 	isSidebar,
@@ -69,7 +62,7 @@ export const Sidebar: React.FunctionComponent<Props> = ({
 				{!loading && tables.length > 0 && (
 					<AsideBody>
 						{tables?.map((table, idx) => (
-							<AsideCard>
+							<AsideCard key={table.id}>
 								<AsideCard.Header
 									color={
 										!table.showColumns

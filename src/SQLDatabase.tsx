@@ -7,7 +7,6 @@ import {
 } from "react";
 import initSqlJs from "sql.js";
 import { Buffer } from "buffer";
-import { config } from "./constant/config";
 import { ErrorToast } from "./components/Toast/error";
 import { SuccessToast } from "./components/Toast/success";
 interface SQLDatabaseState {
