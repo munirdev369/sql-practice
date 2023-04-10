@@ -53,7 +53,6 @@ export const ButtonContainer = styled.div`
 	flex-wrap: wrap;
 	margin-left: auto;
 	gap: 2em;
-
 	& > * {
 		flex: 1;
 	}
@@ -64,4 +63,9 @@ export const ButtonContainer = styled.div`
 		padding-right: 2em !important; 
 		height: 'max-content';
 	}
+	
+	@media screen and (max-width: ${sizes.md}) {
+		width: 100%;
+		flex-direction: column-reverse;
+  }
 `

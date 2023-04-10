@@ -84,6 +84,7 @@ const EditorWithoutErrorBoundary: React.FC = () => {
 						color: "white",
 						cursor: "pointer",
 						fontSize: 16,
+						padding: 10,
 					}}
 				>
 					<input
@@ -119,7 +120,8 @@ const EditorWithoutErrorBoundary: React.FC = () => {
 						borderColor: `#182334`,
 						color: `${colors.text.primary?.[200]}`,
 						backgroundColor: `transparent`,
-						borderWidth: '2px'
+						borderWidth: '2px',
+						width: '100%'
 					}}
 				>
 					<CSVLink
@@ -133,7 +135,8 @@ const EditorWithoutErrorBoundary: React.FC = () => {
 					style={{
 						...btnStyles,
 						backgroundColor: `#0FBC02`,
-						border: "none"
+						border: "none",
+						width: '100%',
 					}}
 					onClick={handleRun}
 				>
